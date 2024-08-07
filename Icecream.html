@@ -9,7 +9,6 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f0f8ff;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -17,12 +16,12 @@
             height: 100vh;
             margin: 0;
             text-align: center;
+            transition: background-color 0.3s;
             background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
         }
 
         h1 {
             font-family: 'Pacifico', cursive;
-            color: #ff4500;
             margin-bottom: 20px;
             font-size: 3em;
             text-shadow: 2px 2px #ff6347;
@@ -39,22 +38,18 @@
             font-size: 18px;
             border: none;
             border-radius: 50px;
-            background-color: #ff69b4;
-            color: white;
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s, transform 0.3s;
         }
 
         button:hover {
-            background-color: #ff1493;
             transform: scale(1.05);
         }
 
         .flavor, .diet {
             margin-top: 30px;
             font-size: 2em;
-            color: #2f4f4f;
             text-align: center;
             max-width: 600px;
             background: #ffffff80;
@@ -113,9 +108,76 @@
         .menu-content a:hover {
             background-color: #f1f1f1;
         }
+
+        .theme-switcher {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .theme-button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .light-theme body {
+            background-color: #f0f8ff;
+        }
+
+        .dark-theme body {
+            background-color: #333;
+            color: white;
+        }
+
+        .dark-theme h1 {
+            text-shadow: 2px 2px #111;
+        }
+
+        .blue-theme body {
+            background-color: #87ceeb;
+        }
+
+        .green-theme body {
+            background-color: #98fb98;
+        }
+
+        .light-theme button {
+            background-color: #ff69b4;
+        }
+
+        .light-theme button:hover {
+            background-color: #ff1493;
+        }
+
+        .dark-theme button {
+            background-color: #444;
+        }
+
+        .dark-theme button:hover {
+            background-color: #222;
+        }
+
+        .blue-theme button {
+            background-color: #1e90ff;
+        }
+
+        .blue-theme button:hover {
+            background-color: #1c86ee;
+        }
+
+        .green-theme button {
+            background-color: #32cd32;
+        }
+
+        .green-theme button:hover {
+            background-color: #2eb82e;
+        }
     </style>
 </head>
-<body>
+<body class="light-theme">
     <div class="menu" onclick="toggleMenu()">
         <div class="bar"></div>
         <div class="bar"></div>
@@ -123,6 +185,12 @@
     </div>
     <div class="menu-content" id="menu-content">
         <a href="#" onclick="openDietGenerator()">Healthy Diet Idea Generator</a>
+        <div class="theme-switcher">
+            <button class="theme-button" style="background-color: #ff69b4;" onclick="setTheme('light-theme')">Light</button>
+            <button class="theme-button" style="background-color: #444;" onclick="setTheme('dark-theme')">Dark</button>
+            <button class="theme-button" style="background-color: #1e90ff;" onclick="setTheme('blue-theme')">Blue</button>
+            <button class="theme-button" style="background-color: #32cd32;" onclick="setTheme('green-theme')">Green</button>
+        </div>
     </div>
 
     <div class="container">
@@ -220,6 +288,10 @@
             document.querySelector('.container').style.display = 'none';
             document.getElementById('diet-container').style.display = 'block';
             document.getElementById('menu-content').style.display = 'none';
+        }
+
+        function setTheme(theme) {
+            document.body.className = theme;
         }
     </script>
 </body>
