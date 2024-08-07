@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Ice Cream Flavor Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        h1 {
+            color: #ff6347;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .flavor {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Ice Cream Flavor Generator</h1>
+    <button onclick="generateFlavor()">Get Random Flavor</button>
+    <div class="flavor" id="flavor-display">Click the button to generate a flavor!</div>
+
+    <script>
+        const flavors = [
+            "Vanilla",
+            "Chocolate",
+            "Strawberry",
+            "Mint Chocolate Chip",
+            "Cookie Dough",
+            "Rocky Road",
+            "Butter Pecan",
+            "Mango",
+            "Pistachio",
+            "Raspberry Ripple",
+            "Neapolitan",
+            "Coffee",
+            "Lemon Sorbet",
+            "Cookies and Cream",
+            "Salted Caramel",
+            "Peach",
+            "Blackberry",
+            "Coconut",
+            "Bubblegum",
+            "Tiramisu"
+        ];
+
+        function generateFlavor() {
+            const randomIndex = Math.floor(Math.random() * flavors.length);
+            const randomFlavor = flavors[randomIndex];
+            document.getElementById('flavor-display').textContent = randomFlavor;
+        }
+    </script>
+</body>
+</html>
