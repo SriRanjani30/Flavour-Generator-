@@ -51,7 +51,7 @@
             transform: scale(1.05);
         }
 
-        .flavor {
+        .flavor, .diet {
             margin-top: 30px;
             font-size: 2em;
             color: #2f4f4f;
@@ -64,7 +64,7 @@
             transition: transform 0.3s;
         }
 
-        .flavor:hover {
+        .flavor:hover, .diet:hover {
             transform: scale(1.05);
         }
 
@@ -75,13 +75,66 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
+
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .menu .bar {
+            width: 35px;
+            height: 5px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .menu-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .menu-content a:hover {
+            background-color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
+    <div class="menu" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="menu-content" id="menu-content">
+        <a href="#" onclick="openDietGenerator()">Healthy Diet Idea Generator</a>
+    </div>
+
     <div class="container">
         <h1>Ice Cream Flavor Generator</h1>
         <button onclick="generateFlavor()">Get Random Flavor</button>
         <div class="flavor" id="flavor-display">Click the button to generate a flavor!</div>
+    </div>
+    
+    <div class="container" id="diet-container" style="display: none;">
+        <h1>Healthy Diet Idea Generator</h1>
+        <button onclick="generateDiet()">Get Healthy Diet Idea</button>
+        <div class="diet" id="diet-display">Click the button to generate a healthy diet idea!</div>
     </div>
 
     <script>
@@ -118,10 +171,55 @@
             "Chocolate Hazelnut"
         ];
 
+        const diets = [
+            "Quinoa Salad with Avocado and Black Beans",
+            "Grilled Chicken Breast with Steamed Broccoli",
+            "Greek Yogurt with Honey and Almonds",
+            "Spinach and Kale Smoothie",
+            "Baked Salmon with Asparagus",
+            "Oatmeal with Fresh Berries",
+            "Mixed Greens Salad with Olive Oil and Lemon Dressing",
+            "Chickpea and Vegetable Stir-Fry",
+            "Turkey and Avocado Wrap",
+            "Lentil Soup with Carrots and Celery",
+            "Whole Grain Toast with Mashed Avocado and Poached Egg",
+            "Brown Rice and Bean Burrito Bowl",
+            "Fresh Fruit Salad with Mint",
+            "Stuffed Bell Peppers with Quinoa and Ground Turkey",
+            "Hummus with Carrot and Cucumber Sticks",
+            "Grilled Vegetable Skewers",
+            "Smoothie Bowl with Spinach, Banana, and Chia Seeds",
+            "Tomato and Cucumber Salad with Feta Cheese",
+            "Zucchini Noodles with Pesto Sauce",
+            "Baked Sweet Potato with Black Beans and Corn",
+            "Greek Salad with Olives and Feta",
+            "Cauliflower Rice Stir-Fry",
+            "Apple Slices with Peanut Butter",
+            "Tuna Salad with Mixed Greens",
+            "Egg White Omelette with Spinach and Mushrooms"
+        ];
+
         function generateFlavor() {
             const randomIndex = Math.floor(Math.random() * flavors.length);
             const randomFlavor = flavors[randomIndex];
             document.getElementById('flavor-display').textContent = randomFlavor;
+        }
+
+        function generateDiet() {
+            const randomIndex = Math.floor(Math.random() * diets.length);
+            const randomDiet = diets[randomIndex];
+            document.getElementById('diet-display').textContent = randomDiet;
+        }
+
+        function toggleMenu() {
+            const menuContent = document.getElementById('menu-content');
+            menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function openDietGenerator() {
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('diet-container').style.display = 'block';
+            document.getElementById('menu-content').style.display = 'none';
         }
     </script>
 </body>
