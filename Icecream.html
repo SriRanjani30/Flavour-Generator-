@@ -5,65 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Ice Cream Flavor Generator</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f8ff;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column;
+            text-align: center;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
         }
+
         h1 {
-            color: #ff6347;
+            font-family: 'Pacifico', cursive;
+            color: #ff4500;
+            margin-bottom: 20px;
+            font-size: 3em;
+            text-shadow: 2px 2px #ff6347;
+            animation: bounce 1s infinite alternate;
         }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 18px;
             border: none;
-            border-radius: 5px;
-            background-color: #007BFF;
+            border-radius: 50px;
+            background-color: #ff69b4;
             color: white;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #ff1493;
+            transform: scale(1.05);
         }
+
         .flavor {
-            margin-top: 20px;
-            font-size: 24px;
-            color: #333;
+            margin-top: 30px;
+            font-size: 2em;
+            color: #2f4f4f;
+            text-align: center;
+            max-width: 600px;
+            background: #ffffff80;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .flavor:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Random Ice Cream Flavor Generator</h1>
-    <button onclick="generateFlavor()">Get Random Flavor</button>
-    <div class="flavor" id="flavor-display">Click the button to generate a flavor!</div>
+    <div class="container">
+        <h1>Ice Cream Flavor Generator</h1>
+        <button onclick="generateFlavor()">Get Random Flavor</button>
+        <div class="flavor" id="flavor-display">Click the button to generate a flavor!</div>
+    </div>
 
     <script>
         const flavors = [
-            "Vanilla",
-            "Chocolate",
-            "Strawberry",
-            "Mint Chocolate Chip",
-            "Cookie Dough",
-            "Rocky Road",
-            "Butter Pecan",
-            "Mango",
-            "Pistachio",
-            "Raspberry Ripple",
-            "Neapolitan",
-            "Coffee",
-            "Lemon Sorbet",
-            "Cookies and Cream",
-            "Salted Caramel",
-            "Peach",
-            "Blackberry",
-            "Coconut",
-            "Bubblegum",
-            "Tiramisu"
+            "Vanilla Bean with Caramel Swirl",
+            "Belgian Chocolate Chunk",
+            "Strawberry Cheesecake Delight",
+            "Mint Chocolate Chip with Dark Chocolate Bits",
+            "Cookie Dough with Brownie Bites",
+            "Rocky Road with Marshmallow Swirls",
+            "Butter Pecan with Maple Syrup",
+            "Mango Sorbet with Coconut Shavings",
+            "Pistachio Almond",
+            "Raspberry Ripple with White Chocolate",
+            "Neapolitan (Vanilla, Chocolate, Strawberry)",
+            "Espresso Coffee Crunch",
+            "Lemon Sorbet with Mint",
+            "Cookies and Cream with Fudge",
+            "Salted Caramel with Pretzel Pieces",
+            "Peach Melba with Raspberry Sauce",
+            "Blackberry Cobbler",
+            "Coconut Cream Pie",
+            "Bubblegum Swirl",
+            "Tiramisu with Mascarpone Cheese",
+            "Honey Lavender",
+            "S'mores with Graham Cracker Bits",
+            "Caramel Apple Pie",
+            "Matcha Green Tea",
+            "Red Velvet Cake",
+            "Blueberry Muffin",
+            "Banana Split",
+            "Cherry Garcia",
+            "Key Lime Pie",
+            "Chocolate Hazelnut"
         ];
 
         function generateFlavor() {
